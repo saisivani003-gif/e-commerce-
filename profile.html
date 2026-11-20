@@ -1,0 +1,168 @@
+<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+<style>
+    /* PROFILE ICON TOP RIGHT - Shopping app style */
+    .profile-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: right;
+        cursor: pointer;
+        position: relative;
+        margin-left: 20px;
+    }
+
+    .profile-btn i {
+        font-size: 26px;
+    }
+
+    .profile-btn span {
+        font-size: 11px;
+        font-weight: 700;
+        margin-top: 2px;
+    }
+
+    /* PERSON INFO CARD ON CLICK */
+    .person-card {
+        position: absolute;
+        top: 50px;
+        right: 0;
+        width: 320px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        border: 1px solid #eee;
+        display: none;
+        z-index: 9999;
+        overflow: hidden;
+    }
+
+    .person-card.show {
+        display: block;
+    }
+
+    .card-top {
+        background: #f8f8f8;
+        padding: 20px;
+        display: flex;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .card-top img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 2px solid #ddd;
+    }
+
+    .info-row {
+        padding: 12px 20px;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #f0f0f0;
+        font-size: 14px;
+    }
+
+    .info-row b {
+        color: #555;
+    }
+
+    .card-actions {
+        padding: 15px;
+        display: flex;
+        gap: 10px;
+    }
+
+    .card-actions button {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 600;
+    }
+
+    .btn-black {
+        background: #000;
+        color: #fff;
+    }
+
+    .btn-white {
+        background: #fff;
+        color: #000;
+        border: 1px solid #000 !important;
+    }
+</style>
+
+<!-- TOP RIGHT ICON -->
+<div class="profile-btn" onclick="togglePersonCard()">
+    <i class='bx bx-user-circle'></i>
+    <span>Profile</span>
+
+    <!-- INFO CARD -->
+    <div class="person-card" id="personCard" onclick="event.stopPropagation()">
+        <div class="card-top">
+            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="cardImg">
+            <div>
+                <h4 id="cardName" style="margin:0;">Guest User</h4>
+                <small id="cardEmail" style="color:#666;">guest@email.com</small><br>
+                <small style="background:#e6f4ea;color:#137333;padding:2px 6px;border-radius:10px;font-size:11px;"
+                    id="cardStatus">● Not Logged In</small>
+            </div>
+        </div>
+
+        <div class="info-row"><b>Full Name:</b> <span id="infoName">-</span></div>
+
+        <div class="card-actions">
+            <button class="btn-white" onclick="location.href='profile.html'">View Profile</button>
+            <button class="btn-black" id="cardBtn" onclick="handleCardBtn()">Sign In</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function togglePersonCard() {
+        document.getElementById("personCard").classList.toggle("show");
+        loadPersonInfo();
+    }
+    // close when click outside
+    document.addEventListener('click', function (e) {
+        if (!e.target.closest('.profile-btn')) {
+            document.getElementById("personCard").classList.remove("show");
+        }
+    });
+
+    function loadPersonInfo() {
+        let name = localStorage.getItem("userName") || "Guest User";
+        let email = localStorage.getItem("userEmail") || "guest@email.com";
+        let logged = localStorage.getItem("isLoggedIn");
+
+        document.getElementById("cardName").innerText = name;
+        document.getElementById("infoName").innerText = name;
+        document.getElementById("cardEmail").innerText = email;
+
+        if (logged === "true") {
+            document.getElementById("cardStatus").innerText = "● Active";
+            document.getElementById("cardStatus").style.background = "#e6f4ea";
+            document.getElementById("cardStatus").style.color = "#137333";
+            document.getElementById("cardBtn").innerText = "Sign Out";
+        } else {
+            document.getElementById("cardStatus").innerText = "● Not Logged In";
+            document.getElementById("cardStatus").style.background = "#fce8e6";
+            document.getElementById("cardStatus").style.color = "#a50e0e";
+            document.getElementById("cardBtn").innerText = "Sign In";
+        }
+    }
+
+    function handleCardBtn() {
+        let logged = localStorage.getItem("isLoggedIn");
+        if (logged === "true") {
+            localStorage.setItem("isLoggedIn", "false");
+            alert("Signed Out");
+            location.reload();
+        } else {
+            window.location.href = "#";
+            document.getElementById("personCard").classList.remove("show");
+            openModal('signin-modal'); // if you have modal
+        }
+    }
+</script>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Out</title>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .box {
+            background: #fff;
+            width: 350px;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        .box i {
+            font-size: 60px;
+        }
+        .box button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .black {
+            background: #000;
+            color: #fff;
+        }
+        .white {
+            background: #fff;
+            color: #000;
+            border: 1px solid #000 !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <i class='bx bx-log-out-circle'></i>
+        <h2>Sign Out?</h2>
+        <p>Are you sure you want to sign out?</p>
+        <button class="black" onclick="signOut()">Yes, Sign Out</button>
+        <button class="white" onclick="goHome()">Cancel</button>
+    </div>
+    <script>
+        function signOut() {
+            localStorage.setItem("isLoggedIn", "false");
+            alert("Signed Out Successfully!");
+            window.location.href = "E-commerce.html";
+        }
+        function goHome() {
+            window.location.href = "E-commerce.html";
+        }
+    </script>
+</body>
+
+</html>

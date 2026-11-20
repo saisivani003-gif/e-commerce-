@@ -1,0 +1,182 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+body {
+    background: #f5f5f5;
+}
+/* === TOP RED HEADER LIKE YOUR SCREENSHOT === */
+.shop-header {
+    background: #a10a0a;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.profile-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+.profile-left img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    object-fit: cover;
+    background: #fff;
+}
+.profile-left h3 {
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+/* === SIGN IN MODAL === */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+.modal.show {
+    display: flex;
+}
+.modal-box {
+    background: #fff;
+    width: 90%;
+    max-width: 360px;
+    padding: 25px;
+    border-radius: 14px;
+    position: relative;
+}
+.modal-box.close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 28px;
+    cursor: pointer;
+}
+.modal-box input {
+    width: 100%;
+    padding: 13px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+}
+.modal-box button {
+    width: 100%;
+    padding: 13px;
+    background: #a10a0a;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+}
+/* === PROFILE INFO CARD - ON CLICK === */
+.info-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 1500;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 65px;
+}
+.info-popup.show {
+    display: flex;
+}
+.info-card {
+    background: #fff;
+    width: 92%;
+    max-width: 380px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+.info-top {
+    background: #a10a0a;
+    padding: 22px;
+    text-align: center;
+    color: #fff;
+    position: relative;
+}
+.info-top img {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    object-fit: cover;
+}
+.info-top h2 {
+    margin-top: 10px;
+    font-size: 20px;
+}
+.info-body {
+    padding: 15px;
+}
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 13px 5px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+}
+.info-row b {
+    color: #666;
+    font-weight: 600;
+}
+.info-row span {
+    font-weight: 600;
+}
+.info-actions {
+    padding: 16px;
+    display: flex;
+    gap: 10px;
+}
+.info-actions button {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+}
+.btn-profile {
+    background: #000;
+    color: #fff;
+}
+.btn-logout {
+    background: #f2f2f2;
+    color: #000;
+}
+.verified {
+    background: #fff;
+    color: #a10a0a;
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 800;
+    margin-top: 8px;
+}
